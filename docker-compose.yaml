@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15.3-alpine
+    environment:
+      - POSTGRES_USER=${PSQL_USER}
+      - POSTGRES_PASSWORD=${PSQL_PASSWORD}
+      - POSTGRES_DB=${PSQL_DATABASE}
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+  app:
+    build: ./main_app
+    volumes:
+      - ./main_app/:/usr/src/main_app/
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+
+volumes:
+  postgres_db:

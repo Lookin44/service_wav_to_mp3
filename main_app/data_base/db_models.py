@@ -21,13 +21,12 @@ class User(Base):
         unique=True,
         default=uuid4
     )
-    audio_files = relationship('AudioFile', backref='user_file')
 
 
 class AudioFile(Base):
     __tablename__ = 'audio_files'
 
-    id = Column(String, primary_key=True, default=uuid4)
+    id = Column(String, primary_key=True, default=str(uuid4()))
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship(User, backref='audios')
 

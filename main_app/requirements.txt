@@ -4,3 +4,4 @@ psycopg2-binary==2.9.6
 uvicorn==0.22.0
 pydantic==1.10.7
 pydub==0.25.1
+python-multipart==0.0.6

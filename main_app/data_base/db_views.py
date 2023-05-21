@@ -24,11 +24,11 @@ def get_user_by_id(id: int) -> User:
     return session.query(User).filter_by(id=id).first()
 
 
-def set_audio_file(user_id: int) -> AudioFile:
+def set_audio_file(user_id: int) -> str:
     audio_file = AudioFile(user_id=user_id)
     session.add(audio_file)
     session.commit()
-    return audio_file
+    return audio_file.id
 
 
 def get_audio_file_by_id(id: str) -> AudioFile:
